@@ -43,6 +43,9 @@ function cmpVersions(a, b) {
 		const c = cmpAlphanum(a[i], b[i]);
 		if (c != 0) return c;
 	}
+	if (n == 3) {
+		return cmp(b.length, a.length);
+	}
 	return cmp(a.length, b.length);
 }
 
