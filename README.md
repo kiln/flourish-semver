@@ -3,7 +3,7 @@ A short and simple module for parsing and comparing semantic version numbers, fo
 Does not support build metadata.
 
 ```js
-import semver from "@flourish/semver";
+const semver = require("@flourish/semver");
 
 semver.parse("1.0.0");
 // Returns [1, 0, 0]
