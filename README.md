@@ -19,7 +19,13 @@ semver.join([1, 2, 3, "alpha", 2]); // "1.2.3-alpha.2"
 ```
 
 ```js
-semver.cmp(semver.parse(""), semver.parse("")); // -1
+semver.cmp(semver.parse("1.2.0"), semver.parse("1.2.1")); // -1
+
+semver.cmp(semver.parse("1.2.0"), semver.parse("1.2.0")); // 0
+
+semver.cmp(semver.parse("1.2.2"), semver.parse("1.2.2-alpha.1")); // +1
+
+semver.cmp(semver.parse("1.2.2"), semver.parse("1.2.3-alpha.1")); // -1
 
 // Sort a list of version numbers into order
 version_numbers
