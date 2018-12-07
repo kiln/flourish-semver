@@ -7,6 +7,7 @@
   "scripts": {
     "prepare": "rollup -c",
     "lint": "eslint src",
+    "pretest": "npm run prepare",
     "test": "mocha",
     "precommit": "lint-staged"
   },
