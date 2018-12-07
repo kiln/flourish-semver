@@ -8,7 +8,7 @@ function toNumber(x) {
 }
 
 function parse(v) {
-	const mo = v.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*))?$/);
+	const mo = v.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:[a-zA-Z0-9-]*[a-zA-Z-][a-zA-Z0-9-]*|0|[1-9]\d*)(?:\.(?:[a-zA-Z0-9-]*[a-zA-Z-][a-zA-Z0-9-]*|0|[1-9]\d*))*))?$/);
 	if (!mo) throw new Error("Failed to parse version number: " + v);
 	return [ mo[1], mo[2], mo[3] ].concat(mo[4] ? mo[4].split(".") : []).map(toNumber);
 }
@@ -25,7 +25,7 @@ function cmp(a, b) {
 	if (a > b) return +1;
 }
 
-// Numbers sort numerically; other strings sort lexicographically; numbers come before non-numbers
+// Numbers sort numerically; strings sort lexicographically; numbers come before strings
 function cmpAlphanum(a, b) {
 	const a_is_numeric = (typeof a === "number"),
 	      b_is_numeric = (typeof b === "number");
@@ -33,7 +33,7 @@ function cmpAlphanum(a, b) {
 	if (a_is_numeric && !b_is_numeric) return -1;
 	if (!a_is_numeric && b_is_numeric) return +1;
 
-	return a_is_numeric ? cmp(+a, +b) : cmp(a, b);
+	return cmp(a, b);
 }
 
 // Compare parsed version numbers per semver spec

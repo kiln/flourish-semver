@@ -4,7 +4,7 @@ function toNumber(x) {
 }
 
 function parse(v) {
-	const mo = v.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*))?$/);
+	const mo = v.match(/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:[a-zA-Z0-9-]*[a-zA-Z-][a-zA-Z0-9-]*|0|[1-9]\d*)(?:\.(?:[a-zA-Z0-9-]*[a-zA-Z-][a-zA-Z0-9-]*|0|[1-9]\d*))*))?$/);
 	if (!mo) throw new Error("Failed to parse version number: " + v);
 	return [ mo[1], mo[2], mo[3] ].concat(mo[4] ? mo[4].split(".") : []).map(toNumber);
 }
