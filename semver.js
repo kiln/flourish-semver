@@ -49,6 +49,6 @@ function cmpVersions(a, b) {
 	return cmp(a.length, b.length);
 }
 
-exports.parse = parse;
-exports.join = join;
 exports.cmp = cmpVersions;
+exports.join = join;
+exports.parse = parse;
