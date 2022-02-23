@@ -5,11 +5,10 @@
   "main": "semver.js",
   "module": "src/index.js",
   "scripts": {
-    "prepare": "rollup -c",
+    "prepare": "husky install",
+    "build": "rollup -c",
     "lint": "eslint src",
-    "pretest": "npm run prepare",
-    "test": "mocha",
-    "precommit": "lint-staged"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
